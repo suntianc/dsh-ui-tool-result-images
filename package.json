@@ -1,7 +1,7 @@
 {
   "name": "dsh-ui-tool-result-images",
   "description": "DeepSeek Harness Web plugin that keeps image-bearing Tool results visible after Compact transcript folding",
-  "version": "0.1.0",
+  "version": "0.1.0-alpha.5",
   "type": "module",
   "packageManager": "pnpm@11.7.0",
   "engines": {
