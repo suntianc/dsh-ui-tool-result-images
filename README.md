@@ -1,8 +1,10 @@
 # dsh-ui-tool-result-images
 
+> **DSH compatibility:** Supports separately verified `0.1.2-alpha.5` and `0.1.3-alpha.1` graphs. The new DSH prerelease is source-only while its npm packages are unavailable; development dependencies retain alpha.5. See [source verification](docs/dsh-source-verification.md).
+
 English | [中文](README.zh.md)
 
-A plugin-only repair for DeepSeek Harness Web `0.1.2-alpha.5`. It keeps raster images returned by successful tools visible after a completed Turn's execution process collapses in Compact transcript mode.
+A plugin-only repair for DeepSeek Harness Web `0.1.2-alpha.5` / `0.1.3-alpha.1`. It keeps raster images returned by successful tools visible after a completed Turn's execution process collapses in Compact transcript mode.
 
 ## Behavior
 
@@ -13,6 +15,12 @@ Rendering delegates to the existing `conversation.message.images` implementation
 ## Compatibility
 
 The tested baseline is DeepSeek Harness `0.1.2-alpha.5`, Cordis `4.0.2`, and React 18. The Web profile must include the standard Conversation, Chat, renderer, and attachment UI plugins.
+
+## Install from npm
+
+```sh
+dsh plugin --profile web add dsh-ui-tool-result-images@0.1.0-alpha.6
+```
 
 ## Development
 

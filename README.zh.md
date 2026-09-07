@@ -1,8 +1,10 @@
 # dsh-ui-tool-result-images
 
+> **DSH 兼容性：** 已分别验证 `0.1.2-alpha.5` 与 `0.1.3-alpha.1` 两套依赖图。目标 DSH npm 包尚未发布，开发锁文件暂保留 alpha.5；新版本使用固定源码制品验证。见[源码验证说明](docs/dsh-source-verification.md)。
+
 [English](README.md) | 中文
 
-这是面向 DeepSeek Harness Web `0.1.2-alpha.5` 的纯插件修复。完成回合的执行过程在 Compact 对话模式中折叠后，成功工具返回的栅格图片仍会保持可见。
+这是面向 DeepSeek Harness Web `0.1.2-alpha.5` / `0.1.3-alpha.1` 的纯插件修复。完成回合的执行过程在 Compact 对话模式中折叠后，成功工具返回的栅格图片仍会保持可见。
 
 ## 行为
 
@@ -13,6 +15,12 @@
 ## 兼容性
 
 测试基线为 DeepSeek Harness `0.1.2-alpha.5`、Cordis `4.0.2` 和 React 18。Web profile 必须包含标准 Conversation、Chat、renderer 和 attachment UI 插件。
+
+## 从 npm 安装
+
+```sh
+dsh plugin --profile web add dsh-ui-tool-result-images@0.1.0-alpha.6
+```
 
 ## 开发
 

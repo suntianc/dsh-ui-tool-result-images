@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+import { DSH_PEER_RANGE, DSH_VERIFY_VERSION, resolvedDshPackages } from './dsh-compatibility.mjs'
 import { execFileSync } from 'node:child_process'
 import { access, mkdtemp, readFile, rm } from 'node:fs/promises'
 import { resolve } from 'node:path'
@@ -26,6 +27,10 @@ try {
 
   const packageRoot = resolve(temporary, 'package')
   const manifest = JSON.parse(await readFile(resolve(packageRoot, 'package.json'), 'utf8'))
+  const dshGraph = resolvedDshPackages(await readFile(resolve(sourceRoot, 'pnpm-lock.yaml'), 'utf8'))
+  if (dshGraph.length === 0 || dshGraph.some(entry => entry.version !== DSH_VERIFY_VERSION)) {
+    throw new Error('package smoke: DSH lockfile is not one coherent verified graph')
+  }
   for (const key of ['.', './client', './invariant']) {
     const target = manifest.exports?.[key]?.default
     const types = manifest.exports?.[key]?.types
@@ -36,8 +41,8 @@ try {
     await access(resolve(packageRoot, types))
   }
   for (const [dependency, range] of Object.entries(manifest.peerDependencies ?? {})) {
-    if (dependency.startsWith('@deepseek-ai/dsh-') && range !== '^0.1.2-alpha.5') {
-      throw new Error(`package smoke: ${dependency} does not use the alpha.5 peer baseline`)
+    if (dependency.startsWith('@deepseek-ai/dsh-') && range !== DSH_PEER_RANGE) {
+      throw new Error(`package smoke: ${dependency} does not declare both verified DSH prerelease ranges`)
     }
   }
   if (manifest.peerDependencies?.['@deepseek-ai/cordis'] !== '^4.0.2') {

@@ -138,6 +138,7 @@ describe('Tool result image projection', () => {
         },
       }, 'append'),
       event(4, 'assistant/message', {
+        ...{ stream: [] },
         turn: 1,
         step: 1,
         message: {
