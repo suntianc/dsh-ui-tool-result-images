@@ -1,5 +1,9 @@
 # Changelog
 
+## [Unreleased]
+
+- Moves the development baseline to DSH `0.1.5-alpha.1` and tests V3 replacement ranges using `startSeq` / `endSeq`. Completed-turn image promotion continues through the public Conversation projection and standard image gallery.
+
 ## [0.1.0-alpha.6] - 2026-09-07
 
 - Add explicit DSH `0.1.3-alpha.1` source compatibility alongside the npm alpha.5 baseline; keep dependency graphs separate.

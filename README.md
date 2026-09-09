@@ -1,10 +1,14 @@
 # dsh-ui-tool-result-images
 
-> **DSH compatibility:** Supports separately verified `0.1.2-alpha.5` and `0.1.3-alpha.1` graphs. The new DSH prerelease is source-only while its npm packages are unavailable; development dependencies retain alpha.5. See [source verification](docs/dsh-source-verification.md).
+> **DSH compatibility (unreleased development):** This checkout targets `0.1.5-alpha.1` as its development and minimum supported baseline, with a coherent dependency graph. Published alpha.6 packages do not include this adaptation; keep older plugin releases for older DSH Hosts. See [verification](docs/dsh-source-verification.md).
 
 English | [中文](README.zh.md)
 
-A plugin-only repair for DeepSeek Harness Web `0.1.2-alpha.5` / `0.1.3-alpha.1`. It keeps raster images returned by successful tools visible after a completed Turn's execution process collapses in Compact transcript mode.
+A plugin-only repair for DeepSeek Harness Web `0.1.5-alpha.1`. It keeps raster images returned by successful tools visible after a completed Turn's execution process collapses in Compact transcript mode.
+
+## Unreleased: DSH 0.1.5 adaptation
+
+Moves the development baseline to DSH `0.1.5-alpha.1` and tests V3 replacement ranges using `startSeq` / `endSeq`. Completed-turn image promotion continues through the public Conversation projection and standard image gallery.
 
 ## Behavior
 
@@ -14,13 +18,27 @@ Rendering delegates to the existing `conversation.message.images` implementation
 
 ## Compatibility
 
-The tested baseline is DeepSeek Harness `0.1.2-alpha.5`, Cordis `4.0.2`, and React 18. The Web profile must include the standard Conversation, Chat, renderer, and attachment UI plugins.
+The tested baseline is DeepSeek Harness `0.1.5-alpha.1`, Cordis `4.0.2`, and React 18. The Web profile must include the standard Conversation, Chat, renderer, and attachment UI plugins.
 
-## Install from npm
+## Install this development adaptation
+
+This change is not published to npm; installing the published `0.1.0-alpha.6` does not obtain it. Build and pack from this plugin checkout:
 
 ```sh
-dsh plugin --profile web add dsh-ui-tool-result-images@0.1.0-alpha.6
+pnpm install --frozen-lockfile
+pnpm run check
+npm pack
 ```
+
+Stop `dsh web`, upgrade the target Host to DSH `0.1.5-alpha.1`, then install the local artifact produced above into the profile you intend to upgrade:
+
+```sh
+dsh --version
+dsh plugin --profile web add ./dsh-ui-tool-result-images-0.1.0-alpha.6.tgz
+dsh plugin --profile web list
+```
+
+Verify the entry, restart `dsh web`, and refresh the browser. Use the exact new version after a formal release. This development adaptation does not itself publish, edit a live profile, or upgrade global DSH. Older DSH installations can retain the [alpha.6 release](https://github.com/suntianc/dsh-ui-tool-result-images/releases).
 
 ## Development
 
@@ -35,4 +53,4 @@ The package is an out-of-tree DSH bundle. Its `cordis.patch.yml` inserts the Hos
 
 - Only durable raster `image` blocks in successful append-origin Tool results are promoted.
 - The plugin intentionally leaves the original Tool result card unchanged for process inspection and audit.
-- It targets the current Compact transcript semantics of DSH `0.1.2-alpha.5`; a future core release that natively promotes image Tool results may make this plugin redundant.
+- It targets the current Compact transcript semantics of DSH `0.1.5-alpha.1`; a future core release that natively promotes image Tool results may make this plugin redundant.

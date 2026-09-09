@@ -19,8 +19,8 @@ This plugin keeps successful image-bearing Tool results visible in DeepSeek Harn
 
 ## Compatibility baseline
 
-- Target DSH package baseline: `0.1.2-alpha.5`.
-- DSH peer ranges use `^0.1.2-alpha.5 || ^0.1.3-alpha.1`; development dependencies pin `0.1.2-alpha.5`.
+- Target DSH package baseline: `0.1.5-alpha.1`.
+- DSH peer ranges use `^0.1.5-alpha.1`; development dependencies pin `0.1.5-alpha.1`.
 - Cordis peer range uses `^4.0.2`; development pins `4.0.2`.
 - Client bundles may import runtime values only from modules supplied by the Web module table. Other DSH imports must be type-only or reached through injected public services.
 
@@ -33,6 +33,6 @@ This plugin keeps successful image-bearing Tool results visible in DeepSeek Harn
 5. Run the narrow test during development and `pnpm run check` before handoff.
 6. Installing into or changing a live DSH profile requires explicit authorization. The originating conversation authorized installation into the current Web profile solely for verification of this task.
 
-## Additional verified source target
+## Matching source verification
 
-DSH `0.1.3-alpha.1` at `d347e703908d0406b7a7ef80e3a0e594d86b2215` is verified through the isolated workflow in `docs/dsh-source-verification.md`. Keep the installable alpha.5 dev/lock baseline until the new npm family is available; peers explicitly include both targets. This is two separate coherent graphs, not permission to mix prereleases. Run both `pnpm run check` and the source check when changing compatibility-sensitive behavior.
+DSH `0.1.5-alpha.1` at `5dda764ed3aa172535a7967b06ff95d9cbfe536a` is the matching source target for the published npm baseline. Use the isolated workflow in `docs/dsh-source-verification.md`; run both `pnpm run check` and the source check when changing compatibility-sensitive behavior. Keep the complete dependency graph coherent. Older release graphs are historical evidence, not the current development baseline.

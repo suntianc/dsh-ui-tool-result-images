@@ -3,6 +3,7 @@ import type { ImageAttachmentRef } from '@deepseek-ai/dsh-attachment'
 import type { MessageId, ToolCallId } from '@deepseek-ai/dsh-llm/brand'
 import type { ToolResultMessage } from '@deepseek-ai/dsh-llm/message'
 import type { SessionEvent, SurfaceOp } from '@deepseek-ai/dsh-session/types'
+import { SessionSeq } from '@deepseek-ai/dsh-session'
 import type {
   ConversationLocation,
   ConversationMatch,
@@ -215,7 +216,7 @@ describe('Tool result image projection', () => {
         turn: 1,
         step: 1,
         message: toolMessage('result-4', 'call-4', [replacement]),
-      }, { op: 'replace', start: 2, end: 2 } as SurfaceOp),
+      }, { op: 'replace', startSeq: SessionSeq(2), endSeq: SessionSeq(2) } as SurfaceOp),
       event(6, 'turn/end', { turn: 1, reason: { kind: 'completed' } }),
     ])
 
