@@ -1,8 +1,9 @@
 # Changelog
 
-## [Unreleased]
+## [0.1.0-rc.1] - 2026-09-10
 
-- Moves the development baseline to DSH `0.1.5-alpha.1` and tests V3 replacement ranges using `startSeq` / `endSeq`. Completed-turn image promotion continues through the public Conversation projection and standard image gallery.
+- Targets DSH `0.1.5-rc.1`. Image promotion continues through the public `conversation.chat.node` renderer and standard gallery despite the upstream top-level move to `main.conversation`.
+- Moves the development baseline to DSH `0.1.5-rc.1` and tests V3 replacement ranges using `startSeq` / `endSeq`. Completed-turn image promotion continues through the public Conversation projection and standard image gallery.
 
 ## [0.1.0-alpha.6] - 2026-09-07
 
