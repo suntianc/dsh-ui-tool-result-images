@@ -1,10 +1,16 @@
 # dsh-ui-tool-result-images
 
-> **DSH 兼容性：** `0.1.0-rc.1` 以 DSH `0.1.5-rc.1` 为开发与最低支持基线，依赖图必须保持一致。旧 DSH 用户请使用兼容的旧插件版本。见[验证说明](docs/dsh-source-verification.md)。
+> **DSH 兼容性：** `0.1.0-rc.2` 以 DSH `0.2.0-rc.1` 为最低且已测试的开发基线；旧版 DSH 请使用兼容的插件版本。见[验证说明](docs/dsh-source-verification.md)。
 
 [English](README.md) | 中文
 
-这是面向 DeepSeek Harness Web `0.1.5-rc.1` 的纯插件修复。完成回合的执行过程在 Compact 对话模式中折叠后，成功工具返回的栅格图片仍会保持可见。
+发布版本：**v0.1.0-rc.2**（npm 标签：`rc`）。
+
+这是面向 DeepSeek Harness Web 的纯插件修复。完成回合的执行过程在 Compact 对话模式中折叠后，成功工具返回的栅格图片仍会保持可见。
+
+## 0.1.0-rc.2：适配 DSH 0.2.0-rc.1
+
+此版本更新 DSH 依赖图，并从持久化 Session 事件中读取包含直接图片内容的 V4 `tool` 角色消息；展示继续使用公开 Conversation 槽和标准图库。完整包检查与固定源码检查已通过，尚未验证真实浏览器 profile。
 
 ## 0.1.0-rc.1：DSH 0.1.5-rc.1 适配
 
@@ -20,19 +26,19 @@
 
 ## 兼容性
 
-测试基线为 DeepSeek Harness `0.1.5-rc.1`、Cordis `4.0.2` 和 React 18。Web profile 必须包含标准 Conversation、Chat、renderer 和 attachment UI 插件。
+测试基线为 DeepSeek Harness `0.2.0-rc.1`、Cordis `4.0.4` 和 React 18。Web profile 必须包含标准 Conversation、Chat、renderer 和 attachment UI 插件。
 
 ## 安装
 
-先停止 `dsh web`，确认目标 Host 使用统一的 DSH `0.1.5-rc.1` 依赖图，再安装准确的预发布版本到目标 profile：
+先停止 `dsh web`，确认目标 Host 使用统一的 DSH `0.2.0-rc.1` 依赖图，再将此准确预发布版本安装到目标 profile：
 
 ```sh
 dsh --version
-dsh plugin --profile web add dsh-ui-tool-result-images@0.1.0-rc.1
+dsh plugin --profile web add dsh-ui-tool-result-images@0.1.0-rc.2
 dsh plugin --profile web list
 ```
 
-核对条目后重启 `dsh web` 并刷新浏览器。此版本通过 npm 的 `rc` 标签发布；不指定版本或标签会使用 `latest`，它不包含本次 RC1 适配。旧 DSH Host 应保留兼容的旧插件版本。
+核对条目后重启 `dsh web` 并刷新浏览器。此版本通过 npm 的 `rc` 标签发布；不指定版本或标签会使用 `latest`，它不包含本次 DSH 0.2 适配。旧 DSH Host 应保留兼容的旧插件版本。
 
 ## 开发
 
@@ -47,4 +53,4 @@ pnpm run check
 
 - 仅提升成功、append-origin 工具结果中的持久化栅格 `image` block。
 - 原工具结果卡片保持不变，继续用于查看执行过程和审计。
-- 插件针对 DSH `0.1.5-rc.1` 当前的 Compact 对话语义；未来核心版本若原生提升图片工具结果，本插件可能不再需要。
+- 插件针对 DSH `0.2.0-rc.1` 当前的 Compact 对话语义；未来核心版本若原生提升图片工具结果，本插件可能不再需要。

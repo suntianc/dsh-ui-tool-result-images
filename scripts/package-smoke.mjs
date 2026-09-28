@@ -45,8 +45,8 @@ try {
       throw new Error(`package smoke: ${dependency} does not declare both verified DSH prerelease ranges`)
     }
   }
-  if (manifest.peerDependencies?.['@deepseek-ai/cordis'] !== '^4.0.2') {
-    throw new Error('package smoke: Cordis peer baseline is not alpha.5-coherent')
+  if (manifest.peerDependencies?.['@deepseek-ai/cordis'] !== '^4.0.4') {
+    throw new Error('package smoke: Cordis peer baseline does not match DSH 0.2.0-rc.1')
   }
 
   const patch = await readFile(resolve(packageRoot, 'cordis.patch.yml'), 'utf8')

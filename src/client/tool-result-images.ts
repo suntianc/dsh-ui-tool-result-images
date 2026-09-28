@@ -49,7 +49,7 @@ export const toolResultImagesDefinition: ConversationNodeDefinition<ToolResultIm
       return { ...context.state, endSeq: event.seq }
     }
     if (event.type !== 'tool/result' || event.data.error !== undefined) return context.state
-    const result = event.data.message.content[0]
+    const result = event.data.message
     if (result.isError === true) return context.state
     const seen = new Set(context.state.images.map(image => String(image.attachmentId)))
     const images: ImageAttachmentRef[] = []

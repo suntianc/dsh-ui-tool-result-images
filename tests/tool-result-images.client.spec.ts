@@ -128,14 +128,11 @@ describe('Tool result image projection', () => {
         step: 1,
         message: {
           id: messageId('result-1'),
-          role: 'user',
+          role: 'tool',
           source: { kind: 'tool', callId },
-          content: [{
-            type: 'tool-result',
-            toolCallId: callId,
-            content: [{ type: 'image', attachment }],
-            isError: false,
-          }],
+          toolCallId: callId,
+          content: [{ type: 'image', attachment }],
+          isError: false,
         },
       }, 'append'),
       event(4, 'assistant/message', {
@@ -184,14 +181,11 @@ describe('Tool result image projection', () => {
       const callId = toolCallId(callIdValue)
       return {
         id: messageId(id),
-        role: 'user',
+        role: 'tool',
         source: { kind: 'tool', callId },
-        content: [{
-          type: 'tool-result',
-          toolCallId: callId,
-          content: images.map(attachment => ({ type: 'image', attachment })),
-          isError,
-        }],
+        toolCallId: callId,
+        content: images.map(attachment => ({ type: 'image', attachment })),
+        isError,
       }
     }
     const node = project([

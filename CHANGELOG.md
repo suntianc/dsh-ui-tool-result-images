@@ -1,5 +1,10 @@
 # Changelog
 
+## [0.1.0-rc.2] - 2026-09-28
+
+- Align the plugin with DSH `0.2.0-rc.1` and read direct image content from V4 role `tool` messages in durable Session events.
+- Preserve the public Conversation slot and gallery projection. Verify the full package and tagged-source graph; a live browser profile remains unverified.
+
 ## [0.1.0-rc.1] - 2026-09-10
 
 - Targets DSH `0.1.5-rc.1`. Image promotion continues through the public `conversation.chat.node` renderer and standard gallery despite the upstream top-level move to `main.conversation`.
