@@ -1,12 +1,16 @@
 # dsh-ui-tool-result-images
 
-> **DSH compatibility:** `0.1.0-rc.2` targets DSH `0.2.0-rc.1` as its minimum and tested development baseline. Use compatible older plugin versions for older DSH Hosts. See [verification](docs/dsh-source-verification.md).
+> **Unreleased checkout compatibility:** This checkout targets DSH `0.2.0-rc.2` as its minimum and tested development baseline. Use compatible older plugin versions for older DSH Hosts. See [verification](docs/dsh-source-verification.md).
 
 English | [中文](README.zh.md)
 
 Release: **v0.1.0-rc.2** (npm tag: `rc`).
 
 A plugin-only repair for DeepSeek Harness Web. It keeps raster images returned by successful tools visible after a completed Turn's execution process collapses in Compact transcript mode.
+
+## Unreleased: DSH 0.2.0-rc.2 adaptation
+
+Revalidates the unchanged V4 Tool-result image attachment, Conversation projection, keyed Chat renderer, and gallery contracts against the official rc2 source. Adds text-only, empty, independently failed-result, and renderer remount regression tests. The dependency graph, peer minimum, lockfile, and tagged-source verification now target rc2. This checkout has not been published; the release and npm installation examples below describe the previous rc1-compatible artifact. Live Web/Desktop profiles are not part of the automated checks.
 
 ## 0.1.0-rc.2: DSH 0.2.0-rc.1 adaptation
 
@@ -26,7 +30,7 @@ Rendering delegates to the existing `conversation.message.images` implementation
 
 ## Compatibility
 
-The tested baseline is DeepSeek Harness `0.2.0-rc.1`, Cordis `4.0.4`, and React 18. The Web profile must include the standard Conversation, Chat, renderer, and attachment UI plugins.
+The tested baseline is DeepSeek Harness `0.2.0-rc.2`, Cordis `4.0.4`, and React 18. The Web profile must include the standard Conversation, Chat, renderer, and attachment UI plugins.
 
 ## Install
 

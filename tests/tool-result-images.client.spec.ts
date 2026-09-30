@@ -136,7 +136,7 @@ describe('Tool result image projection', () => {
         },
       }, 'append'),
       event(4, 'assistant/message', {
-        ...{ stream: [] },
+        stream: [],
         turn: 1,
         step: 1,
         message: {
@@ -216,5 +216,27 @@ describe('Tool result image projection', () => {
 
     if (node === null) throw new Error('completed fixture did not publish an image node')
     expect((node.data as ToolResultImagesData).images).toEqual([first])
+  })
+})
+
+
+describe('rc2 non-image and failed-result compatibility', () => {
+  it.each(['text-only', 'empty', 'message-error', 'event-error'])('does not publish a gallery for %s results', variant => {
+    const callId = toolCallId('call-no-image')
+    const attachment = image('failed-image', 'failed.png')
+    const node = project([
+      event(1, 'turn/start', { turn: 1 }),
+      event(2, 'tool/result', {
+        turn: 1, step: 1,
+        message: {
+          id: messageId('result-no-image'), role: 'tool', source: { kind: 'tool', callId }, toolCallId: callId,
+          content: variant === 'text-only' ? [{ type: 'text', text: 'Complete' }] : variant === 'empty' ? [] : [{ type: 'image', attachment }],
+          ...(variant === 'message-error' ? { isError: true } : {}),
+        },
+        ...(variant === 'event-error' ? { error: { name: 'Error', code: 'FAILED' } } : {}),
+      }, 'append'),
+      event(3, 'turn/end', { turn: 1, reason: { kind: 'completed' } }),
+    ])
+    expect(node).toBeNull()
   })
 })

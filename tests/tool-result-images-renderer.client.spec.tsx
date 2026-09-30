@@ -47,3 +47,21 @@ describe('Tool result image renderer', () => {
     expect(screen.getByTestId('existing-gallery').textContent).toBe('generated.png')
   })
 })
+
+
+it('updates and remounts gallery references without retaining the previous Turn', () => {
+  const first = image()
+  const second = { ...image(), attachmentId: 'image-2' as ImageAttachmentRef['attachmentId'], name: 'next.png' }
+  const renderMessageImages = vi.fn(({ images }: Parameters<RenderMessageImages>[0]) => createElement('div', { 'data-testid': 'gallery' }, images.map(item => 'attachment' in item ? item.attachment.name : item.preview.name).join(',')))
+  const props = (turn: number, attachment: ImageAttachmentRef) => ({
+    node: { key: `tool-result-images:${turn}`, kind: IMAGE_RESULT_NODE_KIND, id: String(turn), target: 'chat', anchorSeq: 6, location: { kind: 'unresolved' }, visibility: 'visible', data: { turn, images: [attachment] } }, renderMessageImages,
+  })
+  const view = render(createElement(ToolResultImagesNodeView, props(1, first) as never))
+  view.rerender(createElement(ToolResultImagesNodeView, props(2, second) as never))
+  expect(screen.getByTestId('gallery').textContent).toBe('next.png')
+  expect(document.querySelector('[data-tool-result-images="1"]')).toBeNull()
+  view.unmount()
+  expect(screen.queryByTestId('gallery')).toBeNull()
+  render(createElement(ToolResultImagesNodeView, props(1, first) as never))
+  expect(screen.getByTestId('gallery').textContent).toBe('generated.png')
+})

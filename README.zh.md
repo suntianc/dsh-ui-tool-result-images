@@ -1,12 +1,16 @@
 # dsh-ui-tool-result-images
 
-> **DSH 兼容性：** `0.1.0-rc.2` 以 DSH `0.2.0-rc.1` 为最低且已测试的开发基线；旧版 DSH 请使用兼容的插件版本。见[验证说明](docs/dsh-source-verification.md)。
+> **未发布检出版本兼容性：** 当前检出版本以 DSH `0.2.0-rc.2` 为最低且已测试的开发基线；旧版 DSH 请使用兼容的插件版本。见[验证说明](docs/dsh-source-verification.md)。
 
 [English](README.md) | 中文
 
 发布版本：**v0.1.0-rc.2**（npm 标签：`rc`）。
 
 这是面向 DeepSeek Harness Web 的纯插件修复。完成回合的执行过程在 Compact 对话模式中折叠后，成功工具返回的栅格图片仍会保持可见。
+
+## 未发布：适配 DSH 0.2.0-rc.2
+
+基于官方 rc2 源码复核未改变的 V4 工具图片附件、Conversation 投影、keyed Chat 渲染与标准图库契约；增加纯文本、空内容、独立错误标记和渲染卸载/重挂载回归测试。依赖图、peer 最低版本、锁文件和固定源码验证已更新为 rc2。当前检出版本尚未发布；下方版本与 npm 安装示例描述的是之前兼容 rc1 的制品。自动检查不包含真实 Web/Desktop profile。
 
 ## 0.1.0-rc.2：适配 DSH 0.2.0-rc.1
 
@@ -26,7 +30,7 @@
 
 ## 兼容性
 
-测试基线为 DeepSeek Harness `0.2.0-rc.1`、Cordis `4.0.4` 和 React 18。Web profile 必须包含标准 Conversation、Chat、renderer 和 attachment UI 插件。
+测试基线为 DeepSeek Harness `0.2.0-rc.2`、Cordis `4.0.4` 和 React 18。Web profile 必须包含标准 Conversation、Chat、renderer 和 attachment UI 插件。
 
 ## 安装
 
