@@ -1,5 +1,11 @@
 # Changelog
 
+## Unreleased
+
+- Target DSH `0.2.0-rc.2` with coherent peers, exact development pins, lockfile, and official-source verification at `639ed015397290b3745d163aafe02ffee4aa3f84`.
+- Verify existing image projection/gallery contracts and add non-image, independent error, and renderer lifecycle regressions.
+- No npm release or live profile change is included.
+
 ## [0.1.0-rc.2] - 2026-09-28
 
 - Align the plugin with DSH `0.2.0-rc.1` and read direct image content from V4 role `tool` messages in durable Session events.

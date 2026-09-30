@@ -19,8 +19,8 @@ This plugin keeps successful image-bearing Tool results visible in DeepSeek Harn
 
 ## Compatibility baseline
 
-- Target DSH package baseline: `0.2.0-rc.1`.
-- DSH peer ranges use `^0.2.0-rc.1`; development dependencies pin `0.2.0-rc.1`.
+- Target DSH package baseline: `0.2.0-rc.2`.
+- DSH peer ranges use `^0.2.0-rc.2`; development dependencies pin `0.2.0-rc.2`.
 - Cordis peer range uses `^4.0.4`; development pins `4.0.4`.
 - Client bundles may import runtime values only from modules supplied by the Web module table. Other DSH imports must be type-only or reached through injected public services.
 
@@ -35,4 +35,4 @@ This plugin keeps successful image-bearing Tool results visible in DeepSeek Harn
 
 ## Matching source verification
 
-DSH `0.2.0-rc.1` at `4878cdabd87d4041bdaff61d04c966883b9fd07a` is the matching source target for the published npm baseline. Use the isolated workflow in `docs/dsh-source-verification.md`; run both `pnpm run check` and the source check when changing compatibility-sensitive behavior. Keep the complete dependency graph coherent. Older release graphs are historical evidence, not the current development baseline.
+DSH `0.2.0-rc.2` at `639ed015397290b3745d163aafe02ffee4aa3f84` is the matching source target for the published npm baseline. Use the isolated workflow in `docs/dsh-source-verification.md`; run both `pnpm run check` and the source check when changing compatibility-sensitive behavior. Keep the complete dependency graph coherent. Older release graphs are historical evidence, not the current development baseline.
